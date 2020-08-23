@@ -1,0 +1,25 @@
+{
+  "name": "elitetech-admin-api",
+  "version": "1.0.0",
+  "description": "elitetech",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tharuPrerera/EliteTech-Admin-API.git"
+  },
+  "keywords": [
+    "elitetech"
+  ],
+  "author": "tharuka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tharuPrerera/EliteTech-Admin-API/issues"
+  },
+  "homepage": "https://github.com/tharuPrerera/EliteTech-Admin-API#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
