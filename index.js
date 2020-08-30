@@ -1,16 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const products = require('./routes/products');
+const laptop = require('./routes/laptop');
+const desktop = require('./routes/desktop');
+const hotDeals = require('./routes/hotDeals');
+const accessories = require('./routes/accessories');
 const app = express();
-const PORT = 6000;
+const PORT = 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use('/api/products',products);
+app.use('/api/laptop',laptop);
+app.use('/api/desktop',desktop);
+app.use('/api/hotDeals',hotDeals);
+app.use('/api/accessories',accessories);
 
 mongoose //database connection string
-  .connect("mongodb://localhost/itemdb", {
+  .connect("mongodb://localhost/productdb", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -20,5 +26,5 @@ mongoose //database connection string
   );
 
 app.listen(PORT, function () {
-    console.log("Listening on port - " + PORT);
-  });
+  console.log("Listening on port - " + PORT);
+});
