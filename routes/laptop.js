@@ -64,7 +64,9 @@ router.delete("/:productId", async (req, res) => {
   if (!product) {
     return res.status(404).send("Product Id does not exit");
   }
-  res.send({product:"Record has been Deleted..!!"});
+  else{
+     res.send({product:"Record has been Deleted..!!"});
+  }
 });
 
 module.exports = router;
