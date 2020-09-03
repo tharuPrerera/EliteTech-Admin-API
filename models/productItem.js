@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const hotDealsItemSchema = new mongoose.Schema({
+const productItemSchema = new mongoose.Schema({
       imgUrl: {
         type: String,
         required: true,
@@ -33,5 +33,5 @@ const hotDealsItemSchema = new mongoose.Schema({
       },
 });
 
-const HotDealsItem = mongoose.model("HotDealsItem" , hotDealsItemSchema);
-module.exports = HotDealsItem;
+const ProductItem = mongoose.model("ProductItem" , productItemSchema);
+module.exports = ProductItem;

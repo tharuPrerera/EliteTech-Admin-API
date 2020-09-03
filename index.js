@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const laptop = require('./routes/laptop');
 const desktop = require('./routes/desktop');
-const hotDeals = require('./routes/hotDeals');
 const accessories = require('./routes/accessories');
+const products = require('./routes/products');
 const app = express();
 const PORT = 5000;
 
@@ -12,11 +12,11 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/laptop',laptop);
 app.use('/api/desktop',desktop);
-app.use('/api/hotDeals',hotDeals);
 app.use('/api/accessories',accessories);
+app.use('/api/products',products);
 
 mongoose //database connection string
-  .connect("mongodb://localhost/productdb", {
+  .connect("mongodb://localhost/item", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

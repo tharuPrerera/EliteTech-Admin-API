@@ -1,14 +1,15 @@
 const express = require("express");
-const Product = require("../models/product");
+const productItem = require("../models/productItem");
+
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  let products = await Product.find();
+  let products = await productItem.find();
   res.send(products);
 });
 
 router.get("/:productId", async (req, res) => {
-  let product = await Product.findById(req.params.productId);
+  let product = await productItem.findById(req.params.productId);
   if (!product) {
     return res
       .sendStatus(400)
@@ -23,7 +24,7 @@ router.post("/", async (req, res) => {
     return res.status(400).send("Not all mandetory values have been set");
   }
   try {
-    let productToBeAddedToDb = new Product({
+    let productToBeAddedToDb = new productItem({
       imgUrl:req.body.imgUrl,
       itemName: req.body.itemName,
       unitPrice: req.body.unitPrice,
@@ -41,7 +42,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:productId", async (req, res) => {
-  let product = await Product.findOneAndUpdate(
+  let product = await productItem.findOneAndUpdate(
     { _id: req.params.productId },
     { $set: { 
       imgUrl:req.body.imgUrl,
@@ -58,7 +59,7 @@ router.put("/:productId", async (req, res) => {
 });
 
 router.delete("/:productId", async (req, res) => {
-  let product = await Product.findOneAndDelete({ _id: req.params.productId });
+  let product = await productItem.findOneAndDelete({ _id: req.params.productId });
 
   if (!product) {
     return res.status(404).send("Product Id does not exit");
