@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const accessoriesItemSchema = new mongoose.Schema({
       imgUrl: {
         type: String,
-        required: true,
       },
       itemName: {
         type: String,
