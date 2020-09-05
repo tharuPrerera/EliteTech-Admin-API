@@ -32,6 +32,7 @@ router.post("/", async (req, res) => {
       code:req.body.code,
       warranty:req.body.warranty,
       quantity:req.body.quantity,
+      stock: req.body.stock
     });
 
     productToBeAddedToDb = await productToBeAddedToDb.save();
@@ -51,7 +52,8 @@ router.put("/:productId", async (req, res) => {
       brand:req.body.brand,
       code:req.body.code,
       warranty:req.body.warranty,
-      quantity:req.body.quantity
+      quantity:req.body.quantity,
+      stock: req.body.stock
              } },
     { new: true, useFindAndModify: false }
   );

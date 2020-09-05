@@ -31,6 +31,10 @@ const laptopItemSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      stock: {
+        type: String,
+        required: true,
+      }
 });
 
 const Laptopitem = mongoose.model("Laptopitem" , laptopItemSchema);

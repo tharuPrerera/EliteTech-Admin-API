@@ -16,7 +16,7 @@ app.use('/api/accessories',accessories);
 app.use('/api/products',products);
 
 mongoose //database connection string
-  .connect("mongodb://localhost/item", {
+  .connect("mongodb://localhost/items", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

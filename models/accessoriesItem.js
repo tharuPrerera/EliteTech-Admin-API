@@ -30,6 +30,10 @@ const accessoriesItemSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      stock: {
+        type: String,
+        required: true,
+      }
 });
 
 const AccessoriesItem = mongoose.model("AccessoriesItem" , accessoriesItemSchema);
