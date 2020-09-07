@@ -12,16 +12,15 @@ router.get("/:productId", async (req, res) => {
   let product = await productItem.findById(req.params.productId);
   if (!product) {
     return res
-      .sendStatus(400)
-      .send("The given id does not exist on our server...");
+      .sendStatus(404)
+      .send("The given id does not exist in our server...");
   }
-
   res.send(product);
 });
 
 router.post("/", async (req, res) => {
   if (!req.body.itemName) {
-    return res.status(400).send("Not all mandetory values have been set");
+    return res.status(404).send("Required fields are empty...Please fill them up.");
   }
   try {
     let productToBeAddedToDb = new productItem({
@@ -36,7 +35,7 @@ router.post("/", async (req, res) => {
     });
 
     productToBeAddedToDb = await productToBeAddedToDb.save();
-    res.send(productToBeAddedToDb);
+    res.status(200).send({message:"Product added successfully",productToBeAddedToDb});
   } catch (e) {
     return res.status(500).send(e.message);
   }
@@ -45,7 +44,9 @@ router.post("/", async (req, res) => {
 router.put("/:productId", async (req, res) => {
   let product = await productItem.findOneAndUpdate(
     { _id: req.params.productId },
-    { $set: { 
+    {
+       $set:
+        { 
       imgUrl:req.body.imgUrl,
       itemName: req.body.itemName,
       unitPrice: req.body.unitPrice,
@@ -54,8 +55,11 @@ router.put("/:productId", async (req, res) => {
       warranty:req.body.warranty,
       quantity:req.body.quantity,
       stock: req.body.stock
-             } },
-    { new: true, useFindAndModify: false }
+         } 
+    },
+    { 
+      new: true, useFindAndModify: false
+    }
   );
   res.send(product);
 });
@@ -66,8 +70,9 @@ router.delete("/:productId", async (req, res) => {
   if (!product) {
     return res.status(404).send("Product Id does not exit");
   }
-
-  res.send(product);
-});
+  else{
+    res.status(200).send({message:"Record has been Deleted..!!", product});
+  }
+  });
 
 module.exports = router;

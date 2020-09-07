@@ -12,8 +12,8 @@ router.get("/:productId", async (req, res) => {
   let product = await laptopItem.findById(req.params.productId);
   if (!product) {
     return res
-      .sendStatus(400)
-      .send("The given id does not exist on our server...");
+      .sendStatus(404)
+      .send("The given id does not exist in our server...");
   }
 
   res.send(product);
@@ -21,7 +21,7 @@ router.get("/:productId", async (req, res) => {
 
 router.post("/", async (req, res) => {
   if (!req.body.itemName) {
-    return res.status(400).send("Not all mandetory values have been set");
+    return res.status(404).send("Required fields are empty...Please fill them up.");
   }
   try {
     let productToBeAddedToDb = new laptopItem({
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
     });
 
     productToBeAddedToDb = await productToBeAddedToDb.save();
-    res.send(productToBeAddedToDb);
+    res.status(200).send({message:"Product added successfully", productToBeAddedToDb});
   } catch (e) {
     return res.status(500).send(e.message);
   }
@@ -67,7 +67,7 @@ router.delete("/:productId", async (req, res) => {
     return res.status(404).send("Product Id does not exit");
   }
   else{
-     res.send({product:"Record has been Deleted..!!"});
+    res.status(200).send({message:"Record has been Deleted..!!", product});
   }
 });
 
