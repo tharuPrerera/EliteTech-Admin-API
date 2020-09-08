@@ -20,9 +20,50 @@ router.get("/:productId", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  if (!req.body.itemName) {
-    return res.status(404).send("Required fields are empty...Please fill them up.");
+  if(!req.body.imgUrl &&
+    !req.body.itemName &&
+    !req.body.unitPrice &&
+    !req.body.brand &&
+    !req.body.code &&
+    !req.body.warranty &&
+    !req.body.quantity &&
+    !req.body.stock
+    ){
+      return res.status(404).send("Not all mandotry values have been set !");
+    }
+
+  if (!req.body.imgUrl) {
+    return res.status(404).send("Image Url cannot be blank.");
   }
+
+  if (!req.body.itemName) {
+    return res.status(404).send("Item Name cannot be blank.");
+  }
+
+  if (!req.body.unitPrice) {
+    return res.status(404).send("Unit Price cannot be blank.");
+  }
+
+  if (!req.body.brand) {
+    return res.status(404).send("Brand cannot be blank.");
+  }
+
+  if (!req.body.code) {
+    return res.status(404).send("Code cannot be blank.");
+  }
+
+  if (!req.body.warranty) {
+    return res.status(404).send("Warranty cannot be blank.");
+  }
+
+  if (!req.body.quantity) {
+    return res.status(404).send("Quantity cannot be blank.");
+  }
+
+  if (!req.body.stock) {
+    return res.status(404).send("Stock cannot be blank.");
+  }
+  
   try {
     let productToBeAddedToDb = new accessoriesItem({
       imgUrl:req.body.imgUrl,
@@ -42,6 +83,50 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:productId", async (req, res) => {
+  if(!req.body.imgUrl &&
+    !req.body.itemName &&
+    !req.body.unitPrice &&
+    !req.body.brand &&
+    !req.body.code &&
+    !req.body.warranty &&
+    !req.body.quantity &&
+    !req.body.stock
+    ){
+      return res.status(404).send("Not all mandotry values have been set !");
+    }
+
+  if (!req.body.imgUrl) {
+    return res.status(404).send("Image Url cannot be blank.");
+  }
+
+  if (!req.body.itemName) {
+    return res.status(404).send("Item Name cannot be blank.");
+  }
+
+  if (!req.body.unitPrice) {
+    return res.status(404).send("Unit Price cannot be blank.");
+  }
+
+  if (!req.body.brand) {
+    return res.status(404).send("Brand cannot be blank.");
+  }
+
+  if (!req.body.code) {
+    return res.status(404).send("Code cannot be blank.");
+  }
+
+  if (!req.body.warranty) {
+    return res.status(404).send("Warranty cannot be blank.");
+  }
+
+  if (!req.body.quantity) {
+    return res.status(404).send("Quantity cannot be blank.");
+  }
+
+  if (!req.body.stock) {
+    return res.status(404).send("Stock cannot be blank.");
+  }
+
   let product = await accessoriesItem.findOneAndUpdate(
     { _id: req.params.productId },
     { $set: { 
@@ -56,7 +141,7 @@ router.put("/:productId", async (req, res) => {
     } },
     { new: true, useFindAndModify: false }
   );
-  res.send(product);
+  res.status(200).send({message:"Product updated successfully",product});
 });
 
 router.delete("/:productId", async (req, res) => {

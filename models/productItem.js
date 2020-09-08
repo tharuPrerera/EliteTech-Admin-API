@@ -9,31 +9,31 @@ const productItemSchema = new mongoose.Schema({
         type: String,
         minlength: 2,
         maxlength: 200,
-        required: [true, 'Item name is required'],
+        required: true,
       },
       unitPrice:{
         type: Number,
-        required: [true, 'Price value should not be empty',]
+        required: true
       },
       brand: {
         type: String,
-        required:[true, 'Brand name is required']
+        required: true
       },
       code: {
         type: Number,
-        required: [true, 'Code should not be of string types'],
+        required: true
       },
       warranty: {
         type: String,
-        required: [true, 'This field should not be empty'],
+        required: true
       },
       quantity: {
         type: Number,
-        required: [true, 'Quantity should not be of string type'],
+        required: true
       },
       stock: {
         type: String,
-        required: [true, 'This field should not be empty'],
+        required: true
       }
 });
 
