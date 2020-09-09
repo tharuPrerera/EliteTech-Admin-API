@@ -19,6 +19,8 @@ router.get("/:productId", async (req, res) => {
   res.send(product);
 });
 
+
+
 router.post("/", async (req, res) => {
   if(!req.body.imgUrl &&
     !req.body.itemName &&
@@ -31,39 +33,38 @@ router.post("/", async (req, res) => {
     ){
       return res.status(404).send("Not all mandotry values have been set !");
     }
-
-  if (!req.body.imgUrl) {
-    return res.status(404).send("Image Url cannot be blank.");
-  }
-
-  if (!req.body.itemName) {
-    return res.status(404).send("Item Name cannot be blank.");
-  }
-
-  if (!req.body.unitPrice) {
-    return res.status(404).send("Unit Price cannot be blank.");
-  }
-
-  if (!req.body.brand) {
-    return res.status(404).send("Brand cannot be blank.");
-  }
-
-  if (!req.body.code) {
-    return res.status(404).send("Code cannot be blank.");
-  }
-
-  if (!req.body.warranty) {
-    return res.status(404).send("Warranty cannot be blank.");
-  }
-
-  if (!req.body.quantity) {
-    return res.status(404).send("Quantity cannot be blank.");
-  }
-
-  if (!req.body.stock) {
-    return res.status(404).send("Stock cannot be blank.");
-  }
-
+    if (!req.body.imgUrl) {
+      return res.status(404).send("Image Url field cannot be blank, please fill it up...");
+    }
+  
+    if (!req.body.itemName) {
+      return res.status(404).send("Item Name field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.unitPrice) {
+      return res.status(404).send("Unit Price field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.brand) {
+      return res.status(404).send("Brand field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.code) {
+      return res.status(404).send("Code field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.warranty) {
+      return res.status(404).send("Warranty field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.quantity) {
+      return res.status(404).send("Quantity field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.stock) {
+      return res.status(404).send("Stock field cannot be blank, please fill it up..");
+    }
+      
 
   try {
     let productToBeAddedToDb = new productItem({
@@ -97,38 +98,38 @@ router.put("/:productId", async (req, res) => {
       return res.status(404).send("Not all mandotry values have been set !");
     }
 
-  if (!req.body.imgUrl) {
-    return res.status(404).send("Image Url cannot be blank.");
-  }
-
-  if (!req.body.itemName) {
-    return res.status(404).send("Item Name cannot be blank.");
-  }
-
-  if (!req.body.unitPrice) {
-    return res.status(404).send("Unit Price cannot be blank.");
-  }
-
-  if (!req.body.brand) {
-    return res.status(404).send("Brand cannot be blank.");
-  }
-
-  if (!req.body.code) {
-    return res.status(404).send("Code cannot be blank.");
-  }
-
-  if (!req.body.warranty) {
-    return res.status(404).send("Warranty cannot be blank.");
-  }
-
-  if (!req.body.quantity) {
-    return res.status(404).send("Quantity cannot be blank.");
-  }
-
-  if (!req.body.stock) {
-    return res.status(404).send("Stock cannot be blank.");
-  }
-
+    if (!req.body.imgUrl) {
+      return res.status(404).send("Image Url field cannot be blank, please fill it up...");
+    }
+  
+    if (!req.body.itemName) {
+      return res.status(404).send("Item Name field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.unitPrice) {
+      return res.status(404).send("Unit Price field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.brand) {
+      return res.status(404).send("Brand field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.code) {
+      return res.status(404).send("Code field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.warranty) {
+      return res.status(404).send("Warranty field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.quantity) {
+      return res.status(404).send("Quantity field cannot be blank, please fill it up..");
+    }
+  
+    if (!req.body.stock) {
+      return res.status(404).send("Stock field cannot be blank, please fill it up..");
+    }
+      
 
   let product = await productItem.findOneAndUpdate(
     { _id: req.params.productId },
